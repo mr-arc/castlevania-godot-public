@@ -1,0 +1,171 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://levels/Level3_2.tmx" type="PackedScene" id=1]
+[ext_resource path="res://items/Sconce.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/Door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Teleport.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/LevelSetup.gd" type="Script" id=5]
+[ext_resource path="res://SpawnArea.tscn" type="PackedScene" id=6]
+[ext_resource path="res://enemies/Skeleton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://items/MoneyBag.tscn" type="PackedScene" id=8]
+[ext_resource path="res://items/HiddenTreasure.tscn" type="PackedScene" id=9]
+[ext_resource path="res://levels/Level3Block.tres" type="Texture" id=10]
+[ext_resource path="res://levels/Level3_2.gd" type="Script" id=11]
+[ext_resource path="res://enemies/BoneTower.tscn" type="PackedScene" id=12]
+[ext_resource path="res://enemies/Raven.tscn" type="PackedScene" id=13]
+[ext_resource path="res://levels/Level3_3.tscn" type="PackedScene" id=14]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 171.5, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 209.5, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10, 86 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 306.5, 43.5 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 16, 4.5 )
+
+[node name="Level3_2" type="Node2D"]
+script = ExtResource( 11 )
+
+[node name="LevelSetup" type="Node" parent="."]
+script = ExtResource( 5 )
+music = "res://music/04 Wicked Child.mp3"
+stage = 8
+
+[node name="Level3_2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -256 )
+
+[node name="Sconces" type="Node2D" parent="Level3_2"]
+
+[node name="Sconce" parent="Level3_2/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 31, 324 )
+drop = "bigHeart"
+
+[node name="Sconce2" parent="Level3_2/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 104, 353 )
+
+[node name="Sconce3" parent="Level3_2/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 615, 352 )
+
+[node name="Sconce4" parent="Level3_2/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 679, 352 )
+
+[node name="Sconce5" parent="Level3_2/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 550, 287 )
+drop = "cross"
+
+[node name="Sconce6" parent="Level3_2/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 391, 96 )
+
+[node name="Sconce8" parent="Level3_2/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 576, 64 )
+
+[node name="Sconce9" parent="Level3_2/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 959, 64 )
+
+[node name="Sconce10" parent="Level3_2/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 1024, 64 )
+
+[node name="Sconce7" parent="Level3_2/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 448, 64 )
+drop = "clock"
+
+[node name="Door" parent="Level3_2" instance=ExtResource( 3 )]
+position = Vector2( 1057, 56 )
+nextLevel = ExtResource( 14 )
+nextLevelPosition = Vector2( 1056, -256 )
+
+[node name="DeathArea" type="Area2D" parent="Level3_2"]
+collision_layer = 32
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level3_2/DeathArea"]
+position = Vector2( 171.5, 187 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level3_2/DeathArea"]
+position = Vector2( 844.5, 187 )
+shape = SubResource( 2 )
+
+[node name="SimonSpawn" type="Position2D" parent="."]
+position = Vector2( 36, 112 )
+
+[node name="GoDown1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 392, -72 )
+destinationNode = NodePath("../GoUp1")
+
+[node name="GoUp1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 583, -8 )
+destinationNode = NodePath("../GoDown1")
+newCameraY = -192
+direction = 1
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 253, -256 )
+
+[node name="OutsideBorder" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideBorder"]
+position = Vector2( -11, 75 )
+shape = SubResource( 3 )
+
+[node name="SpawnArea" parent="." instance=ExtResource( 6 )]
+enemy = "medusahead"
+minSpawnTime = 2.5
+maxSpawnTime = 2.5
+firstSpawnTime = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+position = Vector2( 426, 72.5 )
+shape = SubResource( 4 )
+
+[node name="Skeleton" parent="." instance=ExtResource( 7 )]
+position = Vector2( 670, 32 )
+
+[node name="SecretArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecretArea"]
+position = Vector2( 433, -148 )
+shape = SubResource( 5 )
+
+[node name="BoneTower" parent="." instance=ExtResource( 12 )]
+position = Vector2( 656, -160 )
+
+[node name="BoneTower2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 913, -160 )
+
+[node name="HiddenTreasure" parent="." instance=ExtResource( 9 )]
+position = Vector2( 312, -136 )
+
+[node name="Treasure" parent="HiddenTreasure" instance=ExtResource( 8 )]
+position = Vector2( -8, 0 )
+points = 1000
+type = 3
+autostartTtl = false
+
+[node name="Sprite" type="Sprite" parent="HiddenTreasure"]
+texture = ExtResource( 10 )
+
+[node name="Sprite2" type="Sprite" parent="HiddenTreasure"]
+position = Vector2( -16, 0 )
+texture = ExtResource( 10 )
+
+[node name="Raven" parent="." instance=ExtResource( 13 )]
+position = Vector2( 560, -216 )
+
+[node name="Raven2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 777, -152 )
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( 1056, -256 )
+
+[connection signal="body_entered" from="Level3_2/DeathArea" to="." method="_on_DeathArea_body_entered"]

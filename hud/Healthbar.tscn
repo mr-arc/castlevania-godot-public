@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://hud/Healthbar.gd" type="Script" id=2]
+
+[node name="Healthbar" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -500.0
+margin_bottom = -434.0
+rect_min_size = Vector2( 8, 14 )
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="gui_input" from="." to="." method="_on_Healthbar_gui_input"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

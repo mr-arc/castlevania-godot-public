@@ -1,0 +1,7 @@
+[gd_resource type="BitmapFont" load_steps=2 format=2]
+
+[ext_resource path="res://NesFont.gd" type="Script" id=1]
+
+[resource]
+height = 8.0
+script = ExtResource( 1 )

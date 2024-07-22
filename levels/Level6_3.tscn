@@ -1,0 +1,159 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://levels/Level6_3.tmx" type="PackedScene" id=1]
+[ext_resource path="res://levels/LevelSetup.gd" type="Script" id=2]
+[ext_resource path="res://Teleport.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/Level6_3.gd" type="Script" id=4]
+[ext_resource path="res://items/Sconce.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/EndLevelData.gd" type="Script" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 47.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5, 8 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 10, 82 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 37, 3 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 51, 64.5 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 10, 32.5 )
+
+[node name="Level6_3" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Level6_3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -240 )
+
+[node name="Sconces" type="Node2D" parent="Level6_3"]
+
+[node name="Sconce" parent="Level6_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 481, 68 )
+drop = "cross"
+
+[node name="Sconce2" parent="Level6_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 417, 98 )
+
+[node name="Sconce3" parent="Level6_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 352, 98 )
+drop = "bigHeart"
+
+[node name="Sconce4" parent="Level6_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 288, 98 )
+
+[node name="Sconce5" parent="Level6_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 225, 98 )
+
+[node name="Sconce6" parent="Level6_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 161, 98 )
+
+[node name="Sconce7" parent="Level6_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 96, 98 )
+
+[node name="Sconce8" parent="Level6_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 31, 98 )
+drop = "holywater"
+
+[node name="Borders" type="StaticBody2D" parent="Level6_3"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level6_3/Borders"]
+position = Vector2( 746, 287.5 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level6_3/Borders"]
+position = Vector2( 621, 287.5 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Level6_3/Borders"]
+position = Vector2( 636, 328 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Level6_3/Borders"]
+position = Vector2( -10, 72 )
+shape = SubResource( 6 )
+
+[node name="GoDown1" parent="Level6_3" instance=ExtResource( 3 )]
+position = Vector2( 616, 184 )
+destinationNode = NodePath("../GoUp1")
+
+[node name="GoUp1" parent="Level6_3" instance=ExtResource( 3 )]
+position = Vector2( 552, 232 )
+destinationNode = NodePath("../GoDown1")
+newCameraY = -176
+direction = 1
+
+[node name="DeathArea" type="Area2D" parent="Level6_3"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level6_3/DeathArea"]
+position = Vector2( 561, 179 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level6_3/DeathArea"]
+position = Vector2( 668, 179 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Level6_3/DeathArea"]
+position = Vector2( 633, 195 )
+shape = SubResource( 3 )
+
+[node name="ActivateDracula" type="Area2D" parent="Level6_3"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level6_3/ActivateDracula"]
+position = Vector2( 52, 79 )
+shape = SubResource( 4 )
+
+[node name="BossWall" type="StaticBody2D" parent="Level6_3"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level6_3/BossWall"]
+position = Vector2( 266, 111.5 )
+shape = SubResource( 5 )
+
+[node name="DraculaSpawn" type="Position2D" parent="Level6_3"]
+position = Vector2( 219, 144 )
+
+[node name="MinDracula" type="Position2D" parent="Level6_3"]
+position = Vector2( 16, 144 )
+
+[node name="MaxDracula" type="Position2D" parent="Level6_3"]
+position = Vector2( 241, 144 )
+
+[node name="CrystalSpawn" type="Position2D" parent="Level6_3"]
+position = Vector2( 127, 85 )
+
+[node name="LevelSetup" type="Node" parent="."]
+script = ExtResource( 2 )
+faceRight = false
+music = "res://music/13 Nothing to Lose.mp3"
+stage = 18
+timeLimit = 400
+
+[node name="SimonSpawn" type="Position2D" parent="."]
+position = Vector2( 705, 80 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ShakeTimer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="EndLevelData" type="Node" parent="."]
+script = ExtResource( 6 )
+crystalLocation = NodePath("../Level6_3/CrystalSpawn")
+nextLevelNum = 7
+
+[connection signal="body_entered" from="Level6_3/DeathArea" to="." method="_on_DeathArea_body_entered" flags=6]
+[connection signal="body_entered" from="Level6_3/ActivateDracula" to="." method="_on_ActivateDracula_body_entered" flags=6]

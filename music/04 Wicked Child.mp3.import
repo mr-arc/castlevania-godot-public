@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/04 Wicked Child.mp3-fe1f6f0d7f12346a2fff6fcac38e89fb.mp3str"
+
+[deps]
+
+source_file="res://music/04 Wicked Child.mp3"
+dest_files=[ "res://.import/04 Wicked Child.mp3-fe1f6f0d7f12346a2fff6fcac38e89fb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=22.638

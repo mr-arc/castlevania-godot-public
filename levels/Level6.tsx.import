@@ -1,0 +1,19 @@
+[remap]
+
+importer="vnen.tiled_tileset_importer"
+type="TileSet"
+path="res://.import/Level6.tsx-3e7d82f4428e05511359c589c1eef979.res"
+
+[deps]
+
+source_file="res://levels/Level6.tsx"
+dest_files=[ "res://.import/Level6.tsx-3e7d82f4428e05511359c589c1eef979.res" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=true
+image_flags=0
+embed_internal_images=false
+save_tiled_properties=false
+post_import_script=""

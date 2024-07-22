@@ -1,0 +1,363 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://textures/Map.png" type="Texture" id=1]
+[ext_resource path="res://levels/MapBat.tscn" type="PackedScene" id=2]
+[ext_resource path="res://LevelSelectScreen.gd" type="Script" id=3]
+[ext_resource path="res://hud/HudTheme.theme" type="Theme" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 22, 1, 318, 144 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 384, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 384, 48, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[node name="LevelSelect" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 17.0
+margin_top = 87.0
+margin_right = 494.0
+margin_bottom = 360.0
+alignment = 1
+
+[node name="LevelSelect" type="Label" parent="VBoxContainer"]
+margin_right = 477.0
+margin_bottom = 15.0
+theme = ExtResource( 4 )
+text = "LEVEL SELECT"
+align = 1
+
+[node name="LevelMap" type="TextureRect" parent="VBoxContainer"]
+margin_top = 19.0
+margin_right = 477.0
+margin_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 477, 216 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource( 1 )
+stretch_mode = 5
+
+[node name="L11_BG" type="Polygon2D" parent="VBoxContainer/LevelMap"]
+position = Vector2( 213, -41 )
+color = Color( 0.796078, 0.309804, 0.0588235, 0.305882 )
+polygon = PoolVector2Array( 22, 198, 64, 198, 70, 186, 72, 186, 66, 198, 72, 198, 72, 208, 11, 208, 11, 138, 22, 138 )
+
+[node name="L12_BG" type="Polygon2D" parent="VBoxContainer/LevelMap"]
+position = Vector2( 291, -36 )
+color = Color( 0.796078, 0.309804, 0.0588235, 0.305882 )
+polygon = PoolVector2Array( 47, 155, 47, 180, -10, 180, -10, 155 )
+
+[node name="Line2D" type="Line2D" parent="VBoxContainer/LevelMap/L12_BG"]
+points = PoolVector2Array( 47, 155, 47, 180, -10, 180, -10, 155, 48, 155 )
+width = 2.0
+default_color = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
+
+[node name="Line2D" type="Line2D" parent="VBoxContainer/LevelMap"]
+position = Vector2( 189, -141 )
+points = PoolVector2Array( 65, 166, 65, 177 )
+width = 1.0
+default_color = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
+
+[node name="Levels" type="Node2D" parent="VBoxContainer/LevelMap"]
+
+[node name="L1" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 60, 154, 60, 168, 12, 168, 12, 154 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L1"]
+position = Vector2( 16, 164 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="L2" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+position = Vector2( 50, 0 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 60, 154, 60, 168, 12, 168, 12, 154 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L2"]
+position = Vector2( 16, 164 )
+frames = SubResource( 4 )
+playing = true
+
+[node name="L3" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+position = Vector2( 99, 0 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 47, 156, 47, 180, 12, 180, 12, 156 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L3"]
+position = Vector2( 16, 164 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="L4" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+position = Vector2( 135, 0 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 12, 168, 12, 156, 31, 156, 31, 151, 53, 151, 53, 168 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L4"]
+position = Vector2( 16, 164 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="MapBatBG" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels/L4"]
+position = Vector2( -1, -9 )
+color = Color( 0.670588, 0, 0.0745098, 1 )
+polygon = PoolVector2Array( 32, 160, 32, 177, 54, 177, 54, 160 )
+
+[node name="MapBat" parent="VBoxContainer/LevelMap/Levels/L4" instance=ExtResource( 2 )]
+position = Vector2( 42, 159 )
+frame = 0
+
+[node name="L5" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+position = Vector2( 177, -6 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 24, 144, 24, 168, 12, 168, 12, 156, -6, 156, -6, 144 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L5"]
+position = Vector2( 16, 164 )
+frames = SubResource( 4 )
+playing = true
+
+[node name="L6" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+position = Vector2( 123, -30 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 47, 156, 47, 180, 12, 180, 12, 156 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L6"]
+position = Vector2( 43, 175 )
+frames = SubResource( 4 )
+playing = true
+
+[node name="L7" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+position = Vector2( 87, -42 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 29, 145, 29, 156, 47, 156, 47, 180, 12, 180, 12, 162, 7, 162, 7, 145 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L7"]
+position = Vector2( 43, 175 )
+frames = SubResource( 4 )
+playing = true
+
+[node name="MapBatBG" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels/L7"]
+position = Vector2( -25, -15 )
+color = Color( 0.670588, 0, 0.0745098, 1 )
+polygon = PoolVector2Array( 32, 160, 32, 177, 54, 177, 54, 160 )
+
+[node name="MapBat" parent="VBoxContainer/LevelMap/Levels/L7" instance=ExtResource( 2 )]
+position = Vector2( 17, 153 )
+frame = 0
+
+[node name="L8" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+position = Vector2( 46, -60 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 46, 156, 46, 163, 47, 163, 47, 180, 17, 180, 17, 156 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L8"]
+position = Vector2( 43, 176 )
+frames = SubResource( 4 )
+playing = true
+
+[node name="L9" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+position = Vector2( 76, -78 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 59, 162, 59, 186, 41, 186, 41, 180, 17, 180, 17, 168, 47, 168, 47, 162 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L9"]
+position = Vector2( 21, 176 )
+frames = SubResource( 4 )
+playing = true
+
+[node name="L10" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+position = Vector2( 120, -72 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 46, 156, 94, 156, 94, 151, 116, 151, 116, 168, 87, 168, 87, 167, 16, 167, 16, 156 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L10"]
+position = Vector2( 20, 162 )
+frames = SubResource( 4 )
+playing = true
+
+[node name="MapBatBG" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels/L10"]
+position = Vector2( 62, -9 )
+color = Color( 0.670588, 0, 0.0745098, 1 )
+polygon = PoolVector2Array( 32, 160, 32, 177, 54, 177, 54, 160 )
+
+[node name="MapBat" parent="VBoxContainer/LevelMap/Levels/L10" instance=ExtResource( 2 )]
+position = Vector2( 105, 159 )
+frame = 0
+
+[node name="L11" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+visible = false
+position = Vector2( 213, -41 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 22, 198, 64, 198, 70, 186, 72, 186, 66, 198, 72, 198, 72, 208, 11, 208, 11, 138, 22, 138 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L11"]
+position = Vector2( 16, 142 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="L12" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+visible = false
+position = Vector2( 291, -36 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 47, 155, 47, 180, -10, 180, -10, 155 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L12"]
+position = Vector2( -5, 176 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="L13" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+position = Vector2( 288, -22 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 128, 149, 128, 166, 51, 166, 51, 154, 106, 154, 106, 149 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L13"]
+position = Vector2( 55, 162 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="MapBatBG" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels/L13"]
+position = Vector2( 73, -11 )
+color = Color( 0.670588, 0, 0.0745098, 1 )
+polygon = PoolVector2Array( 33, 160, 33, 177, 55, 177, 55, 160 )
+
+[node name="MapBat" parent="VBoxContainer/LevelMap/Levels/L13" instance=ExtResource( 2 )]
+position = Vector2( 117, 157 )
+
+[node name="L14" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+position = Vector2( 380, -56 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 54, 152, 54, 170, 31, 170, 31, 182, 7, 182, 7, 152 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L14"]
+position = Vector2( 11, 178 )
+frames = SubResource( 4 )
+playing = true
+
+[node name="L15" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+position = Vector2( 411, -90 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 36, 163, 36, 192, 24, 192, 24, 180, 1, 180, 1, 163 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L15"]
+position = Vector2( 28, 188 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="L16" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+position = Vector2( 357, -108 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 42, 168, 42, 181, 54, 181, 54, 192, 24, 192, 24, 180, 1, 180, 1, 163, 23, 163, 23, 168 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L16"]
+position = Vector2( 50, 188 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="MapBatBG" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels/L16"]
+position = Vector2( -31, 3 )
+color = Color( 0.670588, 0, 0.0745098, 1 )
+polygon = PoolVector2Array( 32, 160, 32, 177, 54, 177, 54, 160 )
+
+[node name="MapBat" parent="VBoxContainer/LevelMap/Levels/L16" instance=ExtResource( 2 )]
+position = Vector2( 12, 171 )
+
+[node name="L17" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+position = Vector2( 315, -116 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 42, 164, 42, 176, 36, 176, 36, 175, -12, 175, -12, 164 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L17"]
+position = Vector2( 38, 171 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="L18" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+position = Vector2( 266, -139 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 36, 169, 36, 199, 31, 199, 31, 205, 13, 205, 13, 199, 1, 199, 1, 186, -12, 186, -12, 164, 1, 164, 1, 169 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L18"]
+position = Vector2( 32, 194 )
+frames = SubResource( 4 )
+playing = true
+
+[node name="L19" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels"]
+position = Vector2( 189, -141 )
+color = Color( 1, 1, 1, 0.52549 )
+polygon = PoolVector2Array( 65, 166, 65, 177, 33, 177, 33, 160, 54, 160, 54, 166 )
+
+[node name="Pin" type="AnimatedSprite" parent="VBoxContainer/LevelMap/Levels/L19"]
+position = Vector2( 61, 173 )
+frames = SubResource( 4 )
+playing = true
+
+[node name="MapBatBG" type="Polygon2D" parent="VBoxContainer/LevelMap/Levels/L19"]
+color = Color( 0.670588, 0, 0.0745098, 1 )
+polygon = PoolVector2Array( 33, 160, 33, 177, 54, 177, 54, 160 )
+
+[node name="MapBat" parent="VBoxContainer/LevelMap/Levels/L19" instance=ExtResource( 2 )]
+position = Vector2( 43, 168 )
+
+[node name="StageLabel" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 239.0
+margin_right = 477.0
+margin_bottom = 273.0
+
+[node name="Description" type="Label" parent="VBoxContainer/StageLabel"]
+margin_right = 477.0
+margin_bottom = 15.0
+theme = ExtResource( 4 )
+align = 1
+
+[node name="Boss" type="Label" parent="VBoxContainer/StageLabel"]
+margin_top = 19.0
+margin_right = 477.0
+margin_bottom = 34.0
+theme = ExtResource( 4 )
+align = 1
+uppercase = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "Sounds"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.25
+one_shot = true
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.07
+
+[connection signal="gui_input" from="VBoxContainer/LevelMap" to="." method="_on_LevelMap_gui_input"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout" flags=6]
+[connection signal="timeout" from="FlashTimer" to="." method="_on_FlashTimer_timeout"]

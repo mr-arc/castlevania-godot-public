@@ -1,0 +1,46 @@
+{
+    "automappingRulesFile": "",
+    "commands": [
+    ],
+    "extensionsPath": "extensions",
+    "folders": [
+        "."
+    ],
+    "propertyTypes": [
+        {
+            "id": 1,
+            "name": "StairType",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "Unset",
+                "Right",
+                "Left"
+            ],
+            "valuesAsFlags": false
+        },
+        {
+            "color": "#ffa0a0a4",
+            "id": 2,
+            "members": [
+                {
+                    "name": "StairType",
+                    "propertyType": "StairType",
+                    "type": "string",
+                    "value": "Unset"
+                }
+            ],
+            "name": "Stair",
+            "type": "class",
+            "useAs": [
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        }
+    ]
+}

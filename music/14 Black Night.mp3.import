@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/14 Black Night.mp3-c031fdceba87ab5e370e6e60625f9151.mp3str"
+
+[deps]
+
+source_file="res://music/14 Black Night.mp3"
+dest_files=[ "res://.import/14 Black Night.mp3-c031fdceba87ab5e370e6e60625f9151.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=1.61

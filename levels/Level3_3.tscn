@@ -1,0 +1,179 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://levels/Level3_3.gd" type="Script" id=1]
+[ext_resource path="res://levels/Level3_3.tmx" type="PackedScene" id=2]
+[ext_resource path="res://items/Sconce.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/LevelSetup.gd" type="Script" id=4]
+[ext_resource path="res://levels/Destructible.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/Level3Block.tres" type="Texture" id=6]
+[ext_resource path="res://enemies/BoneTower.tscn" type="PackedScene" id=7]
+[ext_resource path="res://enemies/Raven.tscn" type="PackedScene" id=8]
+[ext_resource path="res://enemies/Skeleton.tscn" type="PackedScene" id=9]
+[ext_resource path="res://SpawnArea.tscn" type="PackedScene" id=10]
+[ext_resource path="res://BossArea.tscn" type="PackedScene" id=11]
+[ext_resource path="res://levels/EndLevelData.gd" type="Script" id=12]
+[ext_resource path="res://bosses/Mummy.tscn" type="PackedScene" id=13]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 364, 10 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 99.25 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 88.125 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10, 31.5313 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 95, 38.5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 51, 80.25 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 128.5, 8 )
+
+[node name="Level3_3" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="LevelSetup" type="Node" parent="."]
+script = ExtResource( 4 )
+music = "res://music/04 Wicked Child.mp3"
+stage = 9
+
+[node name="EndLevelData" type="Node" parent="."]
+script = ExtResource( 12 )
+crystalLocation = NodePath("../CrystalPosition")
+nextLevelNum = 4
+nextLevel = "res://levels/Level4_1.tscn"
+
+[node name="Level3_3" parent="." instance=ExtResource( 2 )]
+
+[node name="Sconces" type="Node2D" parent="Level3_3"]
+
+[node name="Sconce" parent="Level3_3/Sconces" instance=ExtResource( 3 )]
+position = Vector2( 30, 64 )
+
+[node name="Sconce2" parent="Level3_3/Sconces" instance=ExtResource( 3 )]
+position = Vector2( 1245, 67 )
+
+[node name="Sconce3" parent="Level3_3/Sconces" instance=ExtResource( 3 )]
+position = Vector2( 1310, 67 )
+drop = "dagger"
+
+[node name="Sconce4" parent="Level3_3/Sconces" instance=ExtResource( 3 )]
+position = Vector2( 1374, 112 )
+
+[node name="Sconce5" parent="Level3_3/Sconces" instance=ExtResource( 3 )]
+position = Vector2( 1442, 112 )
+
+[node name="Sconce6" parent="Level3_3/Sconces" instance=ExtResource( 3 )]
+position = Vector2( 1506, 112 )
+
+[node name="Destructible" parent="Level3_3" instance=ExtResource( 5 )]
+position = Vector2( 1336, 135 )
+collision_mask = 22
+drop = "porkchop"
+texture = ExtResource( 6 )
+
+[node name="DeathArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
+position = Vector2( 853, 186 )
+shape = SubResource( 4 )
+
+[node name="OutsideBorder" type="StaticBody2D" parent="."]
+collision_layer = 65
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideBorder"]
+position = Vector2( -10, 49.25 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="OutsideBorder"]
+position = Vector2( 1546, 87.125 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="OutsideBorder"]
+position = Vector2( 1270, 142.469 )
+shape = SubResource( 3 )
+
+[node name="Raven" parent="." instance=ExtResource( 8 )]
+position = Vector2( 266, 24 )
+
+[node name="BoneTower" parent="." instance=ExtResource( 7 )]
+position = Vector2( 415, 64 )
+
+[node name="BoneTower2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 670, 64 )
+
+[node name="BoneTower3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1182, 64 )
+
+[node name="Raven2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 362, 24 )
+
+[node name="Raven3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 488, 16 )
+
+[node name="Raven4" parent="." instance=ExtResource( 8 )]
+position = Vector2( 553, 16 )
+
+[node name="Raven5" parent="." instance=ExtResource( 8 )]
+position = Vector2( 746, 24 )
+
+[node name="Skeleton" parent="." instance=ExtResource( 9 )]
+position = Vector2( 808, 64 )
+
+[node name="Skeleton2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 881, 64 )
+
+[node name="SpawnArea" parent="." instance=ExtResource( 10 )]
+enemy = "medusahead"
+minSpawnTime = 2.5
+maxSpawnTime = 2.5
+firstSpawnTime = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+position = Vector2( 1118, 41.5 )
+shape = SubResource( 5 )
+
+[node name="BossArea" parent="." instance=ExtResource( 11 )]
+position = Vector2( -656, -463 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BossArea"]
+position = Vector2( 2141, 543.25 )
+shape = SubResource( 6 )
+
+[node name="SimonSpawn" type="Position2D" parent="."]
+position = Vector2( 49, 80 )
+
+[node name="CrystalPosition" type="Position2D" parent="."]
+position = Vector2( 1408, 80 )
+
+[node name="MummyFloor" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MummyFloor"]
+position = Vector2( 1408.5, 168 )
+shape = SubResource( 7 )
+
+[node name="Mummies" type="Node2D" parent="."]
+
+[node name="Mummy" parent="Mummies" instance=ExtResource( 13 )]
+position = Vector2( 1312, 136 )
+
+[node name="Mummy2" parent="Mummies" instance=ExtResource( 13 )]
+position = Vector2( 1503, 136 )
+
+[connection signal="body_entered" from="DeathArea" to="." method="_on_DeathArea_body_entered"]
+[connection signal="bossReady" from="BossArea" to="." method="_on_BossArea_bossReady" flags=6]
+[connection signal="damaged" from="Mummies/Mummy" to="." method="_on_Mummy_damaged"]
+[connection signal="killed" from="Mummies/Mummy" to="." method="_on_Mummy_killed"]
+[connection signal="damaged" from="Mummies/Mummy2" to="." method="_on_Mummy_damaged"]
+[connection signal="killed" from="Mummies/Mummy2" to="." method="_on_Mummy_killed"]

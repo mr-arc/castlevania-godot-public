@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://CollideFromAbove.gd" type="Script" id=1]
+
+[node name="CollideFromAbove" type="StaticBody2D"]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource( 1 )

@@ -1,0 +1,144 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://levels/Level1_3.tmx" type="PackedScene" id=1]
+[ext_resource path="res://levels/Door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://items/Sconce.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/Level1_3.gd" type="Script" id=4]
+[ext_resource path="res://SpawnArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://bosses/PhantomBat.tscn" type="PackedScene" id=6]
+[ext_resource path="res://BossArea.tscn" type="PackedScene" id=7]
+[ext_resource path="res://levels/Destructible.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/Level1Block.tres" type="Texture" id=9]
+[ext_resource path="res://levels/EndLevelData.gd" type="Script" id=10]
+[ext_resource path="res://levels/LevelSetup.gd" type="Script" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 93 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 150, 44 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 223, 75.5 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 51, 76.5 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 10, 80 )
+
+[node name="Level1_3" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Level1_3" parent="." instance=ExtResource( 1 )]
+
+[node name="Sconces" type="Node2D" parent="."]
+
+[node name="Sconce" parent="Sconces" instance=ExtResource( 3 )]
+position = Vector2( 31, 112 )
+
+[node name="Sconce2" parent="Sconces" instance=ExtResource( 3 )]
+position = Vector2( 97, 51 )
+
+[node name="Sconce3" parent="Sconces" instance=ExtResource( 3 )]
+position = Vector2( 227, 51 )
+drop = "invisibilitypotion"
+
+[node name="Sconce4" parent="Sconces" instance=ExtResource( 3 )]
+position = Vector2( 159, 82 )
+
+[node name="Sconce5" parent="Sconces" instance=ExtResource( 3 )]
+position = Vector2( 352, 115 )
+drop = "axe"
+
+[node name="Sconce6" parent="Sconces" instance=ExtResource( 3 )]
+position = Vector2( 291, 144 )
+
+[node name="Sconce7" parent="Sconces" instance=ExtResource( 3 )]
+position = Vector2( 416, 144 )
+
+[node name="Sconce8" parent="Sconces" instance=ExtResource( 3 )]
+position = Vector2( 480, 144 )
+
+[node name="Sconce9" parent="Sconces" instance=ExtResource( 3 )]
+position = Vector2( 608, 144 )
+
+[node name="Sconce10" parent="Sconces" instance=ExtResource( 3 )]
+position = Vector2( 557, 115 )
+
+[node name="Sconce11" parent="Sconces" instance=ExtResource( 3 )]
+position = Vector2( 672, 115 )
+
+[node name="Sconce12" parent="Sconces" instance=ExtResource( 3 )]
+position = Vector2( 741, 115 )
+
+[node name="Door" parent="." instance=ExtResource( 2 )]
+position = Vector2( 776, 72 )
+
+[node name="OutsideBorder" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideBorder"]
+position = Vector2( -10, 85 )
+shape = SubResource( 1 )
+
+[node name="SimonSpawn" type="Node2D" parent="."]
+position = Vector2( 40, 64 )
+
+[node name="SpawnArea" parent="." instance=ExtResource( 5 )]
+maxEnemies = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+position = Vector2( 154, 52 )
+shape = SubResource( 2 )
+
+[node name="SpawnArea2" parent="." instance=ExtResource( 5 )]
+maxEnemies = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea2"]
+position = Vector2( 227, 84.5 )
+shape = SubResource( 6 )
+
+[node name="BossArea" parent="." instance=ExtResource( 7 )]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BossArea"]
+position = Vector2( 708, 83.5 )
+shape = SubResource( 5 )
+
+[node name="PhantomBat" parent="." instance=ExtResource( 6 )]
+position = Vector2( 624, 28 )
+
+[node name="BossWall" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossWall"]
+position = Vector2( 503, 80 )
+shape = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="CrystalSpawn" type="Node2D" parent="."]
+position = Vector2( 638, 82 )
+
+[node name="Destructible" parent="." instance=ExtResource( 8 )]
+position = Vector2( 696, 136 )
+drop = "doubleortriple"
+texture = ExtResource( 9 )
+
+[node name="EndLevelData" type="Node" parent="."]
+script = ExtResource( 10 )
+crystalLocation = NodePath("../CrystalSpawn")
+nextLevelNum = 2
+nextLevel = "res://levels/Level2_1.tscn"
+
+[node name="LevelSetup" type="Node" parent="."]
+script = ExtResource( 11 )
+stage = 3
+
+[connection signal="body_entered" from="BossArea" to="." method="_on_BossArea_body_entered"]
+[connection signal="bossReady" from="BossArea" to="." method="_on_BossArea_bossReady"]
+[connection signal="damaged" from="PhantomBat" to="." method="_on_PhantomBat_damaged"]
+[connection signal="dead" from="PhantomBat" to="." method="_on_PhantomBat_dead"]

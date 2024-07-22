@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://items/HiddenTreasure.gd" type="Script" id=2]
+[ext_resource path="res://sounds/34 - Secret Reveal.wav" type="AudioStream" id=4]
+
+[node name="HiddenTreasure" type="Node2D"]
+position = Vector2( 392, 392 )
+script = ExtResource( 2 )
+
+[node name="RevealSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+bus = "Sounds"
+
+[connection signal="child_entered_tree" from="." to="." method="_on_HiddenTreasure_child_entered_tree"]

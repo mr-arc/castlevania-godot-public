@@ -1,0 +1,338 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://levels/Level2_2.tmx" type="PackedScene" id=1]
+[ext_resource path="res://levels/Level2_2.gd" type="Script" id=2]
+[ext_resource path="res://enemies/SpearKnight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Teleport.tscn" type="PackedScene" id=4]
+[ext_resource path="res://items/Sconce.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/Door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://levels/Destructible.tscn" type="PackedScene" id=7]
+[ext_resource path="res://levels/Level2Block.tres" type="Texture" id=8]
+[ext_resource path="res://SpawnArea.tscn" type="PackedScene" id=9]
+[ext_resource path="res://items/HiddenTreasure.tscn" type="PackedScene" id=10]
+[ext_resource path="res://items/Chest.tscn" type="PackedScene" id=11]
+[ext_resource path="res://levels/FloatingPlatform.tscn" type="PackedScene" id=12]
+[ext_resource path="res://CollideFromAbove.tscn" type="PackedScene" id=13]
+[ext_resource path="res://levels/Level2_3.tscn" type="PackedScene" id=14]
+[ext_resource path="res://levels/LevelSetup.gd" type="Script" id=15]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 93 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 40.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 173, 31.5 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 95, 76 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 16, 3.5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 270.5, 1.5 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "Move"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 335, -188 ), Vector2( 272, -188 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 335, -188 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Move"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 408, -188 ), Vector2( 456, -188 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 400, -188 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 16.5, 7.5 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 96.125, 7.5 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 48.25, 7.5 )
+
+[node name="Level2_2" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Level2_2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -256 )
+
+[node name="HiddenTreasure" parent="Level2_2" instance=ExtResource( 10 )]
+position = Vector2( 400, 328 )
+
+[node name="Treasure" parent="Level2_2/HiddenTreasure" instance=ExtResource( 11 )]
+
+[node name="Mask" type="Sprite" parent="Level2_2/HiddenTreasure"]
+position = Vector2( 8, 0 )
+texture = ExtResource( 8 )
+
+[node name="Mask2" type="Sprite" parent="Level2_2/HiddenTreasure"]
+position = Vector2( -8, 0 )
+texture = ExtResource( 8 )
+
+[node name="Sconces" type="Node2D" parent="."]
+position = Vector2( -2, -16 )
+
+[node name="Sconce" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 722, 35 )
+
+[node name="Sconce2" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 593, 35 )
+
+[node name="Sconce3" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 465, 35 )
+
+[node name="Sconce4" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 402, 35 )
+
+[node name="Sconce5" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 340, 35 )
+
+[node name="Sconce6" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 210, 35 )
+
+[node name="Sconce7" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 78, 35 )
+
+[node name="Sconce9" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 82, -136 )
+
+[node name="Sconce10" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 208, -136 )
+
+[node name="Sconce11" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 339, -136 )
+
+[node name="Sconce12" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 465, -136 )
+drop = "yellow$700"
+
+[node name="Sconce13" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 657, -136 )
+
+[node name="Sconce14" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 722, -223 )
+
+[node name="Sconce15" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 592, -223 )
+
+[node name="Sconce16" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 530, -223 )
+drop = "clock"
+
+[node name="Sconce17" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 402, -223 )
+
+[node name="Sconce8" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 658, 35 )
+
+[node name="Sconce19" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 146, -223 )
+
+[node name="Sconce20" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 274, 65 )
+
+[node name="Sconce21" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 147, 65 )
+drop = "bigHeart"
+
+[node name="Sconce22" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 529, 35 )
+drop = "dagger"
+
+[node name="Sconce18" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 271, -223 )
+
+[node name="Door" parent="." instance=ExtResource( 6 )]
+position = Vector2( 0, -184 )
+scale = Vector2( -1, 1 )
+nextLevel = ExtResource( 14 )
+nextLevelPosition = Vector2( -768, -80 )
+
+[node name="SimonSpawn" type="Position2D" parent="."]
+position = Vector2( 736, 64 )
+
+[node name="OutsideBorder" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideBorder"]
+position = Vector2( 778, 91 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="OutsideBorder"]
+position = Vector2( 23, -40.5 )
+shape = SubResource( 2 )
+
+[node name="SpearKnight" parent="." instance=ExtResource( 3 )]
+position = Vector2( 236, 48 )
+
+[node name="GoDown1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 55, -72 )
+destinationNode = NodePath("../GoUp1")
+newCameraY = 176
+
+[node name="GoUp1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 87, -8 )
+destinationNode = NodePath("../GoDown1")
+newCameraY = -192
+direction = 1
+
+[node name="Destructible" parent="." instance=ExtResource( 7 )]
+position = Vector2( 633, -216 )
+drop = "porkchop"
+texture = ExtResource( 8 )
+
+[node name="SpawnArea" parent="." instance=ExtResource( 9 )]
+enemy = "medusahead"
+minSpawnTime = 3.0
+maxSpawnTime = 3.0
+firstSpawnTime = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+position = Vector2( 591, 33.5 )
+shape = SubResource( 3 )
+
+[node name="SpawnArea2" parent="." instance=ExtResource( 9 )]
+enemy = "medusahead"
+minSpawnTime = 3.0
+maxSpawnTime = 3.0
+firstSpawnTime = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea2"]
+position = Vector2( 164, -176 )
+shape = SubResource( 4 )
+
+[node name="SecretArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecretArea"]
+position = Vector2( 304, 28.5 )
+shape = SubResource( 5 )
+
+[node name="SecretTimer" type="Timer" parent="SecretArea"]
+wait_time = 2.3
+
+[node name="Pit" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pit"]
+position = Vector2( 270.5, -66.5 )
+shape = SubResource( 6 )
+
+[node name="FloatingPlatform" parent="." instance=ExtResource( 12 )]
+position = Vector2( 335, -188 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FloatingPlatform"]
+autoplay = "Move"
+anims/Move = SubResource( 7 )
+anims/RESET = SubResource( 8 )
+
+[node name="FloatingPlatform2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 400, -188 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FloatingPlatform2"]
+autoplay = "Move"
+anims/Move = SubResource( 9 )
+anims/RESET = SubResource( 10 )
+
+[node name="SpearKnight2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 486, -144 )
+
+[node name="SpearKnight3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 527, -208 )
+
+[node name="SpearKnight4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 688, -208 )
+
+[node name="CollideFromAbove" parent="." instance=ExtResource( 13 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollideFromAbove"]
+position = Vector2( 367.5, -184.5 )
+shape = SubResource( 13 )
+
+[node name="CollideFromAbove4" parent="." instance=ExtResource( 13 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollideFromAbove4"]
+position = Vector2( 159.875, -184.5 )
+shape = SubResource( 12 )
+
+[node name="CollideFromAbove2" parent="." instance=ExtResource( 13 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollideFromAbove2"]
+position = Vector2( 527.75, -184.5 )
+shape = SubResource( 11 )
+
+[node name="CollideFromAbove3" parent="." instance=ExtResource( 13 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollideFromAbove3"]
+position = Vector2( 688, -184.5 )
+shape = SubResource( 11 )
+
+[node name="LevelSetup" type="Node" parent="."]
+script = ExtResource( 15 )
+faceRight = false
+music = "res://music/03 Stalker.mp3"
+stage = 5
+
+[connection signal="body_entered" from="SecretArea" to="." method="_on_SecretArea_body_entered"]
+[connection signal="body_exited" from="SecretArea" to="." method="_on_SecretArea_body_exited"]
+[connection signal="timeout" from="SecretArea/SecretTimer" to="." method="_on_SecretTimer_timeout" flags=6]
+[connection signal="body_entered" from="Pit" to="." method="_on_Pit_body_entered"]

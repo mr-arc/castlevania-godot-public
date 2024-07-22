@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/09 Player Miss.mp3-68b38cf2d0b92de729a63bbe527ef327.mp3str"
+
+[deps]
+
+source_file="res://music/09 Player Miss.mp3"
+dest_files=[ "res://.import/09 Player Miss.mp3-68b38cf2d0b92de729a63bbe527ef327.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

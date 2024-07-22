@@ -1,0 +1,111 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://textures/Enemies.png" type="Texture" id=1]
+[ext_resource path="res://Hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemies/Ghost.gd" type="Script" id=3]
+[ext_resource path="res://enemies/Enemy.gd" type="Script" id=4]
+
+[sub_resource type="CanvasItemMaterial" id=8]
+blend_mode = 1
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 112, 64, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 64, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 9.0
+
+[sub_resource type="Gradient" id=5]
+interpolation_mode = 2
+offsets = PoolRealArray( 0, 0.290503, 1 )
+colors = PoolColorArray( 0.968627, 0.709804, 0.968627, 1, 0.968627, 0.709804, 0.968627, 1, 0.968627, 0.709804, 0.968627, 0 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1.56917, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Ghost" type="AnimatedSprite" groups=["AffectedByClock", "AffectedByRosary"]]
+material = SubResource( 8 )
+frames = SubResource( 3 )
+frame = 1
+playing = true
+script = ExtResource( 3 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 2 )]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 4 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+material = SubResource( 8 )
+position = Vector2( 3, 0 )
+amount = 32
+lifetime = 2.0
+explosiveness = 0.1
+randomness = 0.2
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 6.0
+initial_velocity = 9.0
+initial_velocity_random = 0.25
+scale_amount = 1.7
+scale_amount_random = 0.75
+color = Color( 0.968627, 0.709804, 0.968627, 0.87451 )
+color_ramp = SubResource( 5 )
+hue_variation = 0.05
+hue_variation_random = 0.7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "FadeIn"
+anims/FadeIn = SubResource( 6 )
+anims/RESET = SubResource( 7 )
+
+[node name="Enemy" type="Node" parent="."]
+script = ExtResource( 4 )
+enemyName = "Ghost"
+damage = 2
+points = 300
+weakHits = 3
+strongHits = 2
+hitbox = NodePath("../Hitbox")
+drop = "enemy"

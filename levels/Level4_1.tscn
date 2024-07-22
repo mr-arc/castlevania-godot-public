@@ -1,0 +1,280 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://levels/Level4_1.tmx" type="PackedScene" id=1]
+[ext_resource path="res://levels/LevelSetup.gd" type="Script" id=2]
+[ext_resource path="res://levels/Level4_1.gd" type="Script" id=3]
+[ext_resource path="res://items/Sconce.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/FloatingPlatform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SpawnArea.tscn" type="PackedScene" id=6]
+[ext_resource path="res://CollideFromAbove.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 87.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 139.25 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 703, 16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 11.25, 10 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 602.5, 70.25 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 671.5, 70.25 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Float"
+length = 9.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 254, 133 ), Vector2( 352, 133 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Float"
+length = 8.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../FloatingPlatform2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 808, 156 ), Vector2( 944, 156 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Float"
+length = 8.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../FloatingPlatform3:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1104, 156 ), Vector2( 1007, 156 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../FloatingPlatform4:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1136, 133 ), Vector2( 1253, 133 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../FloatingPlatform4:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1136, 133 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../FloatingPlatform3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1104, 156 ) ]
+}
+
+[node name="Level4_1" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Level4_1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -16 )
+
+[node name="OutsideBorder" type="StaticBody2D" parent="Level4_1"]
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4_1/OutsideBorder"]
+position = Vector2( -10, 99.5 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level4_1/OutsideBorder"]
+position = Vector2( 1546, 50.25 )
+shape = SubResource( 2 )
+
+[node name="DeathArea" type="Area2D" parent="Level4_1"]
+collision_layer = 32
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4_1/DeathArea"]
+position = Vector2( 706, 176 )
+shape = SubResource( 3 )
+
+[node name="GoToNextLevel" type="Area2D" parent="Level4_1"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4_1/GoToNextLevel"]
+position = Vector2( 1524.75, -7 )
+shape = SubResource( 4 )
+
+[node name="Sconces" type="Node2D" parent="Level4_1"]
+position = Vector2( -21, -23 )
+
+[node name="Sconce" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 58, 95 )
+
+[node name="Sconce2" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 119, 95 )
+
+[node name="Sconce4" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 241, 95 )
+drop = "clock"
+
+[node name="Sconce3" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 178, 95 )
+
+[node name="Sconce7" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 440, 95 )
+
+[node name="Sconce8" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 502, 95 )
+
+[node name="Sconce9" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 562, 95 )
+
+[node name="Sconce10" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 631, 95 )
+
+[node name="Sconce11" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 694, 73 )
+
+[node name="Sconce13" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 1141, 126 )
+
+[node name="Sconce15" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 1269, 126 )
+
+[node name="Sconce16" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 1332, 126 )
+
+[node name="Sconce17" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 1461, 105 )
+
+[node name="Sconce14" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 1204, 141 )
+
+[node name="Sconce12" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 758, 73 )
+drop = "holywater"
+
+[node name="Sconce5" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 302, 132 )
+
+[node name="Sconce6" parent="Level4_1/Sconces" instance=ExtResource( 4 )]
+position = Vector2( 372, 132 )
+
+[node name="FloatingPlatform" parent="Level4_1" instance=ExtResource( 5 )]
+position = Vector2( 254, 133 )
+
+[node name="FloatingPlatform2" parent="Level4_1" instance=ExtResource( 5 )]
+position = Vector2( 808, 156 )
+
+[node name="FloatingPlatform3" parent="Level4_1" instance=ExtResource( 5 )]
+position = Vector2( 1104, 156 )
+
+[node name="FloatingPlatform4" parent="Level4_1" instance=ExtResource( 5 )]
+position = Vector2( 1136, 133 )
+
+[node name="CollideFromAbove" parent="Level4_1" instance=ExtResource( 7 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level4_1/CollideFromAbove"]
+position = Vector2( 1488, 56 )
+shape = SubResource( 13 )
+
+[node name="LevelSetup" type="Node" parent="."]
+script = ExtResource( 2 )
+music = "res://music/05 Walking On the Edge.mp3"
+stage = 10
+timeLimit = 400
+
+[node name="SimonSpawn" type="Position2D" parent="."]
+position = Vector2( 65, 112 )
+
+[node name="SimonDrop" type="Position2D" parent="."]
+position = Vector2( 59, -30 )
+
+[node name="FishmanSpawn" parent="." instance=ExtResource( 6 )]
+enemy = "fishman"
+maxEnemies = 2
+minSpawnTime = 1.25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishmanSpawn"]
+position = Vector2( 806.5, 73.25 )
+shape = SubResource( 7 )
+
+[node name="BatSpawn" parent="." instance=ExtResource( 6 )]
+enemy = "bat"
+maxEnemies = 1
+minSpawnTime = 4.0
+maxSpawnTime = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BatSpawn"]
+position = Vector2( 863.5, 73.25 )
+shape = SubResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Level4_1/FloatingPlatform")
+autoplay = "Float"
+playback_process_mode = 0
+anims/Float = SubResource( 5 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Level4_1/FloatingPlatform")
+autoplay = "Float"
+playback_process_mode = 0
+anims/Float = SubResource( 9 )
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Level4_1/FloatingPlatform")
+autoplay = "Float"
+playback_process_mode = 0
+anims/Float = SubResource( 11 )
+anims/RESET = SubResource( 12 )
+
+[connection signal="body_entered" from="Level4_1/DeathArea" to="." method="_on_DeathArea_body_entered"]
+[connection signal="body_entered" from="Level4_1/GoToNextLevel" to="." method="_on_GoToNextLevel_body_entered" flags=6]

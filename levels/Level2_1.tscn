@@ -1,0 +1,203 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://levels/Level2_1.tmx" type="PackedScene" id=1]
+[ext_resource path="res://levels/Level2_1.gd" type="Script" id=2]
+[ext_resource path="res://Teleport.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://items/Sconce.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/Destructible.tscn" type="PackedScene" id=6]
+[ext_resource path="res://levels/Level2Block.tres" type="Texture" id=7]
+[ext_resource path="res://items/Crown.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/FloatingPlatform.tscn" type="PackedScene" id=9]
+[ext_resource path="res://enemies/Bat.tscn" type="PackedScene" id=10]
+[ext_resource path="res://enemies/SpearKnight.tscn" type="PackedScene" id=11]
+[ext_resource path="res://levels/Level2_2.tscn" type="PackedScene" id=12]
+[ext_resource path="res://items/HiddenTreasure.tscn" type="PackedScene" id=13]
+[ext_resource path="res://levels/LevelSetup.gd" type="Script" id=14]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 179, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 58.5, 5.5 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "Platform"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 48, 68 ), Vector2( 80, 68 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10, 33 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4, 13.5 )
+
+[node name="Level2_1" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Level2_1" parent="." instance=ExtResource( 1 )]
+
+[node name="Sconces" type="Node2D" parent="."]
+
+[node name="Sconce" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 336, 339 )
+drop = "cross"
+
+[node name="Sconce2" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 463, 339 )
+drop = "bigHeart"
+
+[node name="Sconce3" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 390, 258 )
+
+[node name="Sconce4" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 464, 18 )
+
+[node name="Sconce5" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 336, 18 )
+
+[node name="Sconce6" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 400, 18 )
+
+[node name="Sconce7" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 273, 18 )
+
+[node name="Sconce8" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 208, 18 )
+
+[node name="Sconce9" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 145, 18 )
+
+[node name="Sconce10" parent="Sconces" instance=ExtResource( 5 )]
+position = Vector2( 82, 18 )
+
+[node name="SimonSpawn" type="Node2D" parent="."]
+position = Vector2( 296, 384 )
+
+[node name="GoDown1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 376, 185 )
+destinationNode = NodePath("../GoUp1")
+newCameraY = 320
+
+[node name="GoUp1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 392, 232 )
+destinationNode = NodePath("../GoDown1")
+newCameraY = 63
+direction = 1
+
+[node name="Door" parent="." instance=ExtResource( 4 )]
+position = Vector2( 256, 360 )
+scale = Vector2( -1, 1 )
+
+[node name="CameraYTop" type="Position2D" parent="."]
+position = Vector2( 256, 95 )
+
+[node name="CameraYBottom" type="Position2D" parent="."]
+position = Vector2( 256, 320 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 256, 240 )
+
+[node name="DeathArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
+position = Vector2( 179, 186 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathArea"]
+position = Vector2( 452.5, 180.5 )
+shape = SubResource( 2 )
+
+[node name="FloatingPlatform" parent="." instance=ExtResource( 9 )]
+position = Vector2( 48, 68 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FloatingPlatform"]
+autoplay = "Platform"
+anims/Platform = SubResource( 7 )
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
+position = Vector2( 262, 207 )
+shape = SubResource( 3 )
+
+[node name="Door2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 40 )
+scale = Vector2( -1, 1 )
+nextLevel = ExtResource( 12 )
+nextLevelPosition = Vector2( -768, 0 )
+
+[node name="Bat" parent="." instance=ExtResource( 10 )]
+position = Vector2( 303, 253 )
+color = "Blue"
+state = 0
+
+[node name="Bat2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 304, 23 )
+color = "Blue"
+state = 0
+
+[node name="SpearKnight" parent="." instance=ExtResource( 11 )]
+position = Vector2( 336, 112 )
+
+[node name="SpearKnight2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 328, 272 )
+
+[node name="SpearKnight3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 123, 48 )
+
+[node name="Destructible" parent="." instance=ExtResource( 6 )]
+position = Vector2( 488, 312 )
+texture = ExtResource( 7 )
+
+[node name="Destructible2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 488, 296 )
+texture = ExtResource( 7 )
+
+[node name="ShotDestructible" parent="." instance=ExtResource( 6 )]
+position = Vector2( 360, 72 )
+drop = "doubleortriple"
+texture = ExtResource( 7 )
+
+[node name="SecretArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecretArea"]
+position = Vector2( 492, 307.5 )
+shape = SubResource( 4 )
+
+[node name="HiddenTreasure" parent="." instance=ExtResource( 13 )]
+
+[node name="Treasure" parent="HiddenTreasure" instance=ExtResource( 8 )]
+
+[node name="Mask" type="Sprite" parent="HiddenTreasure"]
+texture = ExtResource( 7 )
+
+[node name="LevelSetup" type="Node" parent="."]
+script = ExtResource( 14 )
+music = "res://music/03 Stalker.mp3"
+stage = 4
+cameraPosition = Vector2( 256, 240 )
+startFollowingSimon = false
+timeLimit = 400
+
+[connection signal="teleported" from="GoDown1" to="." method="_on_GoDown1_teleported"]
+[connection signal="teleported" from="GoUp1" to="." method="_on_GoUp1_teleported"]
+[connection signal="body_entered" from="DeathArea" to="." method="_on_DeathArea_body_entered"]
+[connection signal="body_entered" from="SecretArea" to="." method="_on_SecretArea_body_entered" flags=6]

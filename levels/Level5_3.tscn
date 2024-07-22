@@ -1,0 +1,349 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://levels/LevelSetup.gd" type="Script" id=1]
+[ext_resource path="res://levels/Level5_3.tmx" type="PackedScene" id=2]
+[ext_resource path="res://levels/Door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Teleport.tscn" type="PackedScene" id=4]
+[ext_resource path="res://items/Sconce.tscn" type="PackedScene" id=5]
+[ext_resource path="res://enemies/BoneTower.tscn" type="PackedScene" id=6]
+[ext_resource path="res://levels/Level5_3.gd" type="Script" id=7]
+[ext_resource path="res://enemies/RedSkeleton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/Destructible.tscn" type="PackedScene" id=9]
+[ext_resource path="res://levels/Level5Block.tres" type="Texture" id=10]
+[ext_resource path="res://SpawnArea.tscn" type="PackedScene" id=11]
+[ext_resource path="res://enemies/AxeKnight.tscn" type="PackedScene" id=12]
+[ext_resource path="res://BossArea.tscn" type="PackedScene" id=13]
+[ext_resource path="res://bosses/GrimReaper.tscn" type="PackedScene" id=14]
+[ext_resource path="res://levels/EndLevelData.gd" type="Script" id=15]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 75 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10, 33.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 190, 11 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 309, 53.5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 10, 80 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 51, 64.5 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 10, 100.5 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 10, 104 )
+
+[sub_resource type="SegmentShape2D" id=10]
+b = Vector2( 32, 0 )
+
+[sub_resource type="SegmentShape2D" id=11]
+b = Vector2( 127, 0 )
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("GrimReaper:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 233, -277 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GrimReaper:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "SpawnReaper"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("GrimReaper:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( 1, 14.42 ),
+"update": 0,
+"values": [ Vector2( 309, -278 ), Vector2( 234, -184 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GrimReaper:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.1, 2 ),
+"transitions": PoolRealArray( 1, 1, 4.92457 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Level5_3" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="LevelSetup" type="Node" parent="."]
+script = ExtResource( 1 )
+faceRight = false
+music = "res://music/06 Heart of Fire.mp3"
+stage = 15
+cameraPosition = Vector2( 784, 0 )
+
+[node name="OutsideBorder" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideBorder"]
+position = Vector2( 1034, 75 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="OutsideBorder"]
+position = Vector2( 986, -34 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="OutsideBorder"]
+position = Vector2( 485, 11 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="OutsideBorder"]
+position = Vector2( 1034, -165 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="OutsideBorder"]
+position = Vector2( -11, -165 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="OutsideBorder"]
+position = Vector2( 175, -251 )
+shape = SubResource( 2 )
+
+[node name="Level5_3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -240 )
+
+[node name="Door" parent="Level5_3" instance=ExtResource( 3 )]
+position = Vector2( 32, 120 )
+
+[node name="Sconces" type="Node2D" parent="Level5_3"]
+
+[node name="Sconce" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 977, 337 )
+
+[node name="Sconce2" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 914, 367 )
+
+[node name="Sconce3" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 720, 337 )
+
+[node name="Sconce5" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 591, 337 )
+drop = "cross"
+
+[node name="Sconce4" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 657, 367 )
+
+[node name="Sconce6" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 530, 272 )
+
+[node name="Sconce7" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 783, 272 )
+
+[node name="Sconce8" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 847, 272 )
+
+[node name="Sconce9" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 993, 94 )
+
+[node name="Sconce10" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 865, 94 )
+
+[node name="Sconce11" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 738, 94 )
+
+[node name="Sconce12" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 610, 94 )
+
+[node name="Sconce13" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 483, 94 )
+
+[node name="Sconce14" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 352, 94 )
+drop = "blue$400"
+
+[node name="Sconce19" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 94, 94 )
+
+[node name="Sconce20" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 162, 94 )
+
+[node name="Sconce21" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 226, 35 )
+
+[node name="Sconce22" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 31, 35 )
+
+[node name="Sconce23" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 801, 35 )
+
+[node name="Sconce15" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 289, 128 )
+
+[node name="Sconce16" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 415, 128 )
+
+[node name="Sconce17" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 672, 127 )
+
+[node name="Sconce18" parent="Level5_3/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 929, 127 )
+
+[node name="BoneTower" parent="Level5_3" instance=ExtResource( 6 )]
+position = Vector2( 808, 368 )
+direction = 1
+
+[node name="BoneTower2" parent="Level5_3" instance=ExtResource( 6 )]
+position = Vector2( 553, 272 )
+direction = 1
+
+[node name="RedSkeleton" parent="Level5_3" instance=ExtResource( 8 )]
+position = Vector2( 847, 272 )
+startDown = true
+direction = -1
+
+[node name="RedSkeleton2" parent="Level5_3" instance=ExtResource( 8 )]
+position = Vector2( 655, 368 )
+startDown = true
+
+[node name="Destructible" parent="Level5_3" instance=ExtResource( 9 )]
+position = Vector2( 984, 264 )
+texture = ExtResource( 10 )
+
+[node name="Destructible2" parent="Level5_3" instance=ExtResource( 9 )]
+position = Vector2( 984, 280 )
+drop = "porkchop"
+texture = ExtResource( 10 )
+
+[node name="SpawnArea" parent="Level5_3" instance=ExtResource( 11 )]
+enemy = "medusahead"
+minSpawnTime = 3.0
+maxSpawnTime = 3.0
+firstSpawnTime = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level5_3/SpawnArea"]
+position = Vector2( 683, 90.5 )
+shape = SubResource( 5 )
+
+[node name="AxeKnight" parent="Level5_3" instance=ExtResource( 12 )]
+position = Vector2( 809, 129 )
+direction = -1
+
+[node name="AxeKnight2" parent="Level5_3" instance=ExtResource( 12 )]
+position = Vector2( 518, 129 )
+direction = -1
+
+[node name="BossWall" type="StaticBody2D" parent="Level5_3"]
+position = Vector2( -237, -462 )
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level5_3/BossWall"]
+position = Vector2( 503, 534 )
+shape = SubResource( 6 )
+
+[node name="BossArea" parent="Level5_3" instance=ExtResource( 13 )]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level5_3/BossArea"]
+position = Vector2( 51, 78 )
+shape = SubResource( 7 )
+
+[node name="ReaperColliders" type="StaticBody2D" parent="Level5_3"]
+collision_layer = 64
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level5_3/ReaperColliders"]
+position = Vector2( 266, 43.5 )
+shape = SubResource( 12 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Level5_3/ReaperColliders"]
+position = Vector2( 175, -48 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Level5_3/ReaperColliders"]
+position = Vector2( 175, 155 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Level5_3/ReaperColliders"]
+position = Vector2( -11, 46 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level5_3/ReaperColliders"]
+position = Vector2( 224, 80 )
+shape = SubResource( 10 )
+one_way_collision = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Level5_3/ReaperColliders"]
+position = Vector2( -1, 80 )
+shape = SubResource( 10 )
+one_way_collision = true
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Level5_3/ReaperColliders"]
+position = Vector2( 64, 112 )
+shape = SubResource( 11 )
+one_way_collision = true
+
+[node name="GoDown1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 920, -56 )
+destinationNode = NodePath("../GoUp1")
+
+[node name="GoUp1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 935, -8 )
+destinationNode = NodePath("../GoDown1")
+newCameraY = -176
+direction = 1
+
+[node name="SimonSpawn" type="Position2D" parent="."]
+position = Vector2( 977, 143 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 811, 0 )
+
+[node name="GrimReaper" parent="." instance=ExtResource( 14 )]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 233, -277 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 8 )
+anims/SpawnReaper = SubResource( 9 )
+
+[node name="EndLevelData" type="Node" parent="."]
+script = ExtResource( 15 )
+crystalLocation = NodePath("../CrystalSpawn")
+nextLevelNum = 6
+nextLevel = "res://levels/Level6_1.tscn"
+
+[node name="CrystalSpawn" type="Position2D" parent="."]
+position = Vector2( 128, -173 )
+
+[connection signal="body_entered" from="Level5_3/BossArea" to="." method="_on_BossArea_body_entered" flags=6]
+[connection signal="bossReady" from="Level5_3/BossArea" to="." method="_on_BossArea_bossReady" flags=6]
+[connection signal="damaged" from="GrimReaper" to="." method="_on_GrimReaper_damaged"]
+[connection signal="dead" from="GrimReaper" to="." method="_on_GrimReaper_dead" flags=6]

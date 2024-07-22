@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://textures/Enemies.png" type="Texture" id=1]
+[ext_resource path="res://Hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemies/Enemy.gd" type="Script" id=3]
+[ext_resource path="res://enemies/Fleaman.tscn" type="PackedScene" id=4]
+[ext_resource path="res://enemies/Eagle.gd" type="Script" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 176, 48, 32, 48 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 208, 48, 32, 48 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.5
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 15.5, 14.5 )
+
+[node name="Eagle" type="AnimatedSprite" groups=["AffectedByClock", "AffectedByRosary"]]
+frames = SubResource( 3 )
+frame = 1
+playing = true
+script = ExtResource( 5 )
+
+[node name="Enemy" type="Node" parent="."]
+script = ExtResource( 3 )
+enemyName = "Eagle"
+damage = 3
+points = 300
+hitbox = NodePath("../Hitbox")
+drop = "enemy"
+
+[node name="Hitbox" parent="." instance=ExtResource( 2 )]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( -0.5, 2.5 )
+shape = SubResource( 4 )
+
+[node name="Fleaman" parent="." instance=ExtResource( 4 )]
+show_behind_parent = true
+position = Vector2( -2, 20 )
+state = 0
+
+[node name="DropTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="killed" from="Enemy" to="." method="_on_Enemy_killed" flags=6]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="KillTimer" to="." method="_on_KillTimer_timeout"]

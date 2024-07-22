@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://items/DropItem.tscn" type="PackedScene" id=1]
+[ext_resource path="res://items/MoneyBag.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Flashing"
+length = 0.24
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("DropItem:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 29, 30, 31 ]
+}
+
+[node name="MoneyBag" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="DropItem" parent="." instance=ExtResource( 1 )]
+frame = 29
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Flashing = SubResource( 1 )
+
+[connection signal="pickup" from="DropItem" to="." method="_on_DropItem_pickup"]

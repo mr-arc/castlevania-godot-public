@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/01 Prologue.mp3-18a0da2c051d9a8cfdf5d1f67918959d.mp3str"
+
+[deps]
+
+source_file="res://music/01 Prologue.mp3"
+dest_files=[ "res://.import/01 Prologue.mp3-18a0da2c051d9a8cfdf5d1f67918959d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

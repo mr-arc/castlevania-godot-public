@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Hitbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/Bosses.png" type="Texture" id=2]
+[ext_resource path="res://bosses/PhantomBat.gd" type="Script" id=3]
+[ext_resource path="res://enemies/Enemy.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Asleep"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Awake"
+length = 0.26
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.13 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+
+[node name="PhantomBat" type="Sprite" groups=["AffectedByClock"]]
+texture = ExtResource( 2 )
+hframes = 4
+vframes = 9
+frame = 2
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Asleep = SubResource( 2 )
+anims/Awake = SubResource( 3 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 1 )]
+collision_mask = 6
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+polygon = PoolVector2Array( -3, -6, 3, -6, 9, -8, 15, 1, 2, 8, -2, 8, -15, 1, -9, -8 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Enemy" type="Node" parent="."]
+script = ExtResource( 4 )
+enemyName = "Phantom Bat"
+damage = 2
+points = 3000
+weakHits = 12
+strongHits = 8
+hitbox = NodePath("../Hitbox")
+deathBehavior = 1
+
+[connection signal="damaged" from="Enemy" to="." method="_on_Enemy_damaged"]
+[connection signal="killed" from="Enemy" to="." method="_on_Enemy_killed" flags=6]

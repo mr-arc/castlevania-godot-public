@@ -1,0 +1,209 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://levels/Level3_1.tmx" type="PackedScene" id=1]
+[ext_resource path="res://levels/LevelSetup.gd" type="Script" id=2]
+[ext_resource path="res://Teleport.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://items/Sconce.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/Level3_1.gd" type="Script" id=6]
+[ext_resource path="res://GhostSpawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://enemies/Fleaman.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/Destructible.tscn" type="PackedScene" id=9]
+[ext_resource path="res://levels/Level3Block.tres" type="Texture" id=10]
+[ext_resource path="res://enemies/Skeleton.tscn" type="PackedScene" id=11]
+[ext_resource path="res://enemies/Raven.tscn" type="PackedScene" id=12]
+[ext_resource path="res://levels/Level3_2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://items/MoneyBag.tscn" type="PackedScene" id=14]
+[ext_resource path="res://items/HiddenTreasure.tscn" type="PackedScene" id=15]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 9, 4 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 317, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 38, 4.5 )
+
+[node name="Level3_1" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Level3_1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -272 )
+
+[node name="Sconces" type="Node2D" parent="Level3_1"]
+
+[node name="Sconce" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 735, 402 )
+drop = "yellow$700"
+
+[node name="Sconce2" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 671, 418 )
+
+[node name="Sconce3" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 607, 418 )
+
+[node name="Sconce4" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 543, 418 )
+drop = "holywater"
+
+[node name="Sconce5" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 478, 418 )
+
+[node name="Sconce6" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 416, 418 )
+
+[node name="Sconce7" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 351, 418 )
+
+[node name="Sconce8" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 289, 418 )
+
+[node name="Sconce9" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 223, 418 )
+
+[node name="Sconce10" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 95, 401 )
+
+[node name="Sconce12" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 157, 65 )
+drop = "bigHeart"
+
+[node name="Sconce13" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 224, 129 )
+
+[node name="Sconce14" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 295, 129 )
+
+[node name="Sconce15" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 351, 128 )
+
+[node name="Sconce16" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 423, 96 )
+
+[node name="Sconce17" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 479, 145 )
+
+[node name="Sconce18" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 541, 145 )
+
+[node name="Sconce19" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 606, 130 )
+drop = "axe"
+
+[node name="Sconce20" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 671, 130 )
+
+[node name="Sconce21" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 733, 82 )
+
+[node name="Sconce11" parent="Level3_1/Sconces" instance=ExtResource( 5 )]
+position = Vector2( 159, 336 )
+drop = "bigHeart"
+
+[node name="Door" parent="Level3_1" instance=ExtResource( 4 )]
+position = Vector2( 768, 88 )
+nextLevel = ExtResource( 13 )
+nextLevelPosition = Vector2( 769, -271 )
+
+[node name="GoDown1" parent="Level3_1" instance=ExtResource( 3 )]
+position = Vector2( 104, 184 )
+destinationNode = NodePath("../GoUp1")
+
+[node name="GoUp1" parent="Level3_1" instance=ExtResource( 3 )]
+position = Vector2( 72, 264 )
+destinationNode = NodePath("../GoDown1")
+newCameraY = -208
+direction = 1
+
+[node name="StartDoor" parent="Level3_1" instance=ExtResource( 4 )]
+position = Vector2( 769, 392 )
+
+[node name="HiddenTreasure" parent="Level3_1" instance=ExtResource( 15 )]
+position = Vector2( 424, 120 )
+
+[node name="Treasure" parent="Level3_1/HiddenTreasure" instance=ExtResource( 14 )]
+points = 1000
+type = 3
+autostartTtl = false
+
+[node name="Mask" type="Sprite" parent="Level3_1/HiddenTreasure"]
+texture = ExtResource( 10 )
+
+[node name="SecretTrigger" type="Area2D" parent="Level3_1"]
+position = Vector2( 0, 272 )
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level3_1/SecretTrigger"]
+position = Vector2( 535, -116 )
+shape = SubResource( 3 )
+
+[node name="LevelSetup" type="Node" parent="."]
+script = ExtResource( 2 )
+faceRight = false
+music = "res://music/04 Wicked Child.mp3"
+stage = 7
+timeLimit = 500
+
+[node name="SimonSpawn" type="Position2D" parent="."]
+position = Vector2( 704, 144 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 0, -272 )
+
+[node name="DeathArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
+position = Vector2( 444, -85 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathArea"]
+position = Vector2( 95, -68 )
+shape = SubResource( 2 )
+
+[node name="GhostSpawner" parent="." instance=ExtResource( 7 )]
+position = Vector2( 587, 143 )
+
+[node name="Fleaman" parent="." instance=ExtResource( 8 )]
+position = Vector2( 433, 104 )
+
+[node name="Fleaman3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 179, 72 )
+
+[node name="Fleaman2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 305, 104 )
+
+[node name="Destructible" parent="." instance=ExtResource( 9 )]
+position = Vector2( 296, 120 )
+drop = "porkchop"
+texture = ExtResource( 10 )
+
+[node name="Skeleton" parent="." instance=ExtResource( 11 )]
+position = Vector2( 57, 96 )
+
+[node name="Skeleton2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 360, -144 )
+
+[node name="Skeleton3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 649, -144 )
+
+[node name="Raven" parent="." instance=ExtResource( 12 )]
+position = Vector2( 279, -248 )
+
+[node name="Raven2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 423, -201 )
+
+[node name="Raven3" parent="." instance=ExtResource( 12 )]
+position = Vector2( 490, -232 )
+
+[node name="Raven4" parent="." instance=ExtResource( 12 )]
+position = Vector2( 513, -120 )
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( 769, -271 )
+
+[connection signal="teleported" from="Level3_1/GoUp1" to="." method="_on_GoUp1_teleported"]
+[connection signal="body_entered" from="DeathArea" to="." method="_on_DeathArea_body_entered"]

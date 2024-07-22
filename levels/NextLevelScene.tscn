@@ -1,0 +1,170 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://textures/Map.png" type="Texture" id=1]
+[ext_resource path="res://levels/MapBat.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/MapPin.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/NextLevelScene.gd" type="Script" id=4]
+[ext_resource path="res://textures/Simon.png" type="Texture" id=5]
+[ext_resource path="res://sounds/07 - Simon Step.wav" type="AudioStream" id=6]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=6]
+resource_name = "LeftSide"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Map:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 340, 11.5 ), Vector2( 85, 11.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WalkingSimon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -76, 78 ), Vector2( -76, 78 ), Vector2( 138, 78 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "RightSide"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Map:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 340, 11.5 ), Vector2( -64, 11.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WalkingSimon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4, 7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -76, 78 ), Vector2( -76, 78 ), Vector2( 138, 78 ) ]
+}
+
+[node name="NextLevelScene" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Map" type="Sprite" parent="."]
+position = Vector2( 85, 11.5 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 384, 147 )
+
+[node name="Level2" type="Node2D" parent="Map"]
+position = Vector2( -192, -73.5 )
+
+[node name="MapBat" parent="Map/Level2" instance=ExtResource( 2 )]
+position = Vector2( 92, 75 )
+frame = 0
+
+[node name="MapPin" parent="Map/Level2" instance=ExtResource( 3 )]
+position = Vector2( 152, 107 )
+frame = 0
+
+[node name="Level3" type="Node2D" parent="Map"]
+visible = false
+position = Vector2( -192, -73.5 )
+
+[node name="MapBat" parent="Map/Level3" instance=ExtResource( 2 )]
+position = Vector2( 172, 59 )
+
+[node name="MapPin" parent="Map/Level3" instance=ExtResource( 3 )]
+position = Vector2( 80, 79 )
+
+[node name="Level4" type="Node2D" parent="Map"]
+visible = false
+position = Vector2( -192, -73.5 )
+
+[node name="MapBat" parent="Map/Level4" instance=ExtResource( 2 )]
+position = Vector2( 292, 91 )
+
+[node name="MapPin" parent="Map/Level4" instance=ExtResource( 3 )]
+position = Vector2( 173, 69 )
+
+[node name="Level5" type="Node2D" parent="Map"]
+visible = false
+position = Vector2( -192, -73.5 )
+
+[node name="MapBat" parent="Map/Level5" instance=ExtResource( 2 )]
+position = Vector2( 268, 43 )
+
+[node name="MapPin" parent="Map/Level5" instance=ExtResource( 3 )]
+position = Vector2( 292, 83 )
+
+[node name="Level6" type="Node2D" parent="Map"]
+visible = false
+position = Vector2( -192, -73.5 )
+
+[node name="MapBat" parent="Map/Level6" instance=ExtResource( 2 )]
+position = Vector2( 177, 19 )
+frame = 0
+
+[node name="MapPin" parent="Map/Level6" instance=ExtResource( 3 )]
+position = Vector2( 258, 39 )
+frame = 0
+
+[node name="WalkingSimon" type="AnimatedSprite" parent="."]
+position = Vector2( 138, 78 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/LeftSide = SubResource( 6 )
+anims/RightSide = SubResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -18.0
+bus = "Sounds"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.27
+one_shot = true

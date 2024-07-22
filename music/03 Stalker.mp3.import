@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/03 Stalker.mp3-df8d41456f52ad5e3c5abfa1b0188836.mp3str"
+
+[deps]
+
+source_file="res://music/03 Stalker.mp3"
+dest_files=[ "res://.import/03 Stalker.mp3-df8d41456f52ad5e3c5abfa1b0188836.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=4.273

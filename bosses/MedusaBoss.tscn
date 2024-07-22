@@ -1,0 +1,101 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://textures/Bosses.png" type="Texture" id=1]
+[ext_resource path="res://Hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://bosses/MedusaBoss.gd" type="Script" id=3]
+[ext_resource path="res://bosses/MedusaStatue.tres" type="Texture" id=4]
+[ext_resource path="res://enemies/Enemy.gd" type="Script" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 32, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "Active",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ), SubResource( 7 ), ExtResource( 4 ), ExtResource( 4 ), ExtResource( 4 ), SubResource( 8 ), ExtResource( 4 ), ExtResource( 4 ), SubResource( 9 ), ExtResource( 4 ), ExtResource( 4 ), SubResource( 10 ), ExtResource( 4 ), SubResource( 11 ), ExtResource( 4 ), SubResource( 12 ), ExtResource( 4 ), SubResource( 13 ), ExtResource( 4 ), SubResource( 14 ) ],
+"loop": false,
+"name": "Intro",
+"speed": 12.0
+} ]
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 15.0
+
+[node name="MedusaBoss" type="AnimatedSprite" groups=["AffectedByClock"]]
+frames = SubResource( 5 )
+animation = "Intro"
+script = ExtResource( 3 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 2 )]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 6 )
+
+[node name="SnakeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MoveTimer" type="Timer" parent="."]
+
+[node name="Enemy" type="Node" parent="."]
+script = ExtResource( 5 )
+enemyName = "Medusa"
+damage = 2
+points = 3000
+weakHits = 12
+strongHits = 8
+hitbox = NodePath("../Hitbox")
+deathBehavior = 1
+
+[connection signal="timeout" from="SnakeTimer" to="." method="_on_SnakeTimer_timeout"]
+[connection signal="damaged" from="Enemy" to="." method="_on_Enemy_damaged"]
+[connection signal="killed" from="Enemy" to="." method="_on_Enemy_killed" flags=6]

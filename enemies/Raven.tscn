@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Hitbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enemies/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://textures/Enemies.png" type="Texture" id=3]
+[ext_resource path="res://enemies/Raven.gd" type="Script" id=4]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 144, 80, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 160, 80, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 160, 64, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 144, 64, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 2 ) ],
+"loop": true,
+"name": "Flying",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "Perched",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 8, 7.5 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 93.2631
+
+[node name="Raven" type="AnimatedSprite" groups=["AffectedByClock", "AffectedByRosary"]]
+frames = SubResource( 5 )
+animation = "Perched"
+playing = true
+script = ExtResource( 4 )
+
+[node name="Enemy" type="Node" parent="."]
+script = ExtResource( 2 )
+enemyName = "Raven"
+damage = 3
+points = 200
+hitbox = NodePath("../Hitbox")
+drop = "enemy"
+dieOnSimonCollision = true
+
+[node name="Hitbox" parent="." instance=ExtResource( 1 )]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 0, -0.5 )
+shape = SubResource( 6 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 0, -2.98023e-08 )
+scale = Vector2( 0.15, 0.15 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Tween" type="Tween" parent="."]
+playback_process_mode = 0
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="SimonDetector" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SimonDetector"]
+shape = SubResource( 7 )
+
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="KillTimer" to="." method="_on_KillTimer_timeout"]
+[connection signal="body_entered" from="SimonDetector" to="." method="_on_SimonDetector_body_entered" flags=6]

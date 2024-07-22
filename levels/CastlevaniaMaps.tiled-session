@@ -1,0 +1,246 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Level6_3.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "Intro.tsx": {
+            "scaleInDock": 2.5,
+            "scaleInEditor": 3
+        },
+        "IntroLevel.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 211.33333333333331,
+                "y": 122.66666666666663
+            }
+        },
+        "Leve3_2.tmx": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 676.3333333333333,
+                "y": 141
+            }
+        },
+        "Level1.tsx": {
+            "scaleInDock": 2.8,
+            "scaleInEditor": 4
+        },
+        "Level1_1.tmx": {
+            "scale": 5.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1020.2727272727273,
+                "y": 113.81818181818181
+            }
+        },
+        "Level1_2.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 265,
+                "y": 210.99999999999997
+            }
+        },
+        "Level1_3.tmx": {
+            "scale": 1.2196614583333334,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 383.71303512330525,
+                "y": 127.90434504110173
+            }
+        },
+        "Level2.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 4
+        },
+        "Level2_1.tmx": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 256,
+                "y": 255.5
+            }
+        },
+        "Level2_2.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 383.99999999999994,
+                "y": 256
+            }
+        },
+        "Level2_3.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 378,
+                "y": 257
+            }
+        },
+        "Level3.tsx": {
+            "scaleInDock": 2.8,
+            "scaleInEditor": 4
+        },
+        "Level3_1.tmx": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 384,
+                "y": 255.66666666666666
+            }
+        },
+        "Level3_2.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 640,
+                "y": 256
+            }
+        },
+        "Level3_3.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1368.6666666666665,
+                "y": 76.66666666666666
+            }
+        },
+        "Level4.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 3
+        },
+        "Level4_1.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1226,
+                "y": 87.99999999999997
+            }
+        },
+        "Level4_2.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 768,
+                "y": 128
+            }
+        },
+        "Level4_3.tmx": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 715.3333333333333,
+                "y": 103.66666666666666
+            }
+        },
+        "Level5.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 5.5
+        },
+        "Level5_1.tmx": {
+            "scale": 0.33,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 640.9090909090909,
+                "y": 901.5151515151515
+            }
+        },
+        "Level5_2.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 640.6666666666667,
+                "y": 540.6666666666667
+            }
+        },
+        "Level5_3.tmx": {
+            "scale": 4,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 511.625,
+                "y": 308.875
+            }
+        },
+        "Level6.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 2
+        },
+        "Level6_1.tmx": {
+            "scale": 5.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 895.7272727272727,
+                "y": 166.45454545454547
+            }
+        },
+        "Level6_2.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 382.99999999999994,
+                "y": 396.99999999999994
+            }
+        },
+        "Level6_3.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 378.99999999999994,
+                "y": 173.66666666666663
+            }
+        },
+        "TestLevel.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -6,
+                "y": -25.333333333333343
+            }
+        }
+    },
+    "last.imagePath": "C:/Users/Tbone/Documents/castlevaniafirst/textures",
+    "map.fixedSize": false,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "mapScene.enableWorlds": true,
+    "openFiles": [
+        "Level5_1.tmx",
+        "Level5_2.tmx",
+        "Level5_3.tmx",
+        "Level5.tsx",
+        "Level6.tsx",
+        "Level6_1.tmx",
+        "Level6_2.tmx",
+        "Level6_3.tmx"
+    ],
+    "project": "CastlevaniaMaps.tiled-project",
+    "property.type": "StairType",
+    "recentFiles": [
+        "Level5_1.tmx",
+        "Level5_2.tmx",
+        "Level5_3.tmx",
+        "Level5.tsx",
+        "Level6.tsx",
+        "Level6_1.tmx",
+        "Level6_2.tmx",
+        "Level6_3.tmx",
+        "Level1_3.tmx",
+        "Level2.tsx",
+        "Level1.tsx",
+        "Level2_1.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

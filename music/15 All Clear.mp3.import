@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/15 All Clear.mp3-9f516a91e9f8cee7c9009c57de0c1828.mp3str"
+
+[deps]
+
+source_file="res://music/15 All Clear.mp3"
+dest_files=[ "res://.import/15 All Clear.mp3-9f516a91e9f8cee7c9009c57de0c1828.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

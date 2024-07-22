@@ -1,0 +1,127 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://TitleScreen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://hud/HudTheme.theme" type="Theme" id=2]
+[ext_resource path="res://MobileShell.gd" type="Script" id=3]
+[ext_resource path="res://textures/NESController.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 5
+atlas = ExtResource( 4 )
+region = Rect2( 84.0628, 160.236, 226.458, 250.168 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 122.0
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 5
+atlas = ExtResource( 4 )
+region = Rect2( 783, 290, 120, 120 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 60.0
+
+[node name="MobileShell" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 512.0
+margin_bottom = 448.0
+
+[node name="Spacer" type="Control" parent="VBoxContainer"]
+margin_right = 512.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 128 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 132.0
+margin_right = 512.0
+margin_bottom = 448.0
+size_flags_vertical = 3
+
+[node name="DPad" type="Control" parent="VBoxContainer/HBoxContainer"]
+margin_right = 248.0
+rect_min_size = Vector2( 128, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Movement" type="TouchScreenButton" parent="VBoxContainer/HBoxContainer/DPad"]
+unique_name_in_owner = true
+normal = SubResource( 1 )
+shape = SubResource( 3 )
+
+[node name="Center" type="Position2D" parent="VBoxContainer/HBoxContainer/DPad/Movement"]
+position = Vector2( 115, 131 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 252.0
+margin_right = 512.0
+margin_bottom = 316.0
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 260.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 104.0
+margin_right = 260.0
+margin_bottom = 251.0
+theme = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 128.0
+margin_bottom = 147.0
+
+[node name="B_Button" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 128.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+
+[node name="Whip" type="TouchScreenButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/B_Button"]
+normal = SubResource( 2 )
+shape = SubResource( 4 )
+action = "attack"
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 132.0
+margin_right = 128.0
+margin_bottom = 147.0
+text = "ATTACK"
+align = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 132.0
+margin_right = 260.0
+margin_bottom = 147.0
+
+[node name="A_Button" type="Control" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 128.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+
+[node name="Jump" type="TouchScreenButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/A_Button"]
+normal = SubResource( 2 )
+shape = SubResource( 4 )
+action = "jump"
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 132.0
+margin_right = 128.0
+margin_bottom = 147.0
+text = "JUMP"
+align = 1
+
+[node name="Scene" type="Position2D" parent="."]
+position = Vector2( 235, 0 )
+
+[node name="TitleScreen" parent="Scene" instance=ExtResource( 1 )]
+rect_min_size = Vector2( 512, 448 )
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/B_Button/Whip" to="." method="_on_Any_Button_pressed"]
+[connection signal="released" from="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/B_Button/Whip" to="." method="_on_Any_Button_released"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/A_Button/Jump" to="." method="_on_Any_Button_pressed"]
+[connection signal="released" from="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/A_Button/Jump" to="." method="_on_Any_Button_released"]

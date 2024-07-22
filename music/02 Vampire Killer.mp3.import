@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/02 Vampire Killer.mp3-1d856975476dbabf8a8a74df82777b87.mp3str"
+
+[deps]
+
+source_file="res://music/02 Vampire Killer.mp3"
+dest_files=[ "res://.import/02 Vampire Killer.mp3-1d856975476dbabf8a8a74df82777b87.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0.0

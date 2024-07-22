@@ -1,0 +1,109 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://levels/Level6_1.tmx" type="PackedScene" id=1]
+[ext_resource path="res://items/Sconce.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/LevelSetup.gd" type="Script" id=3]
+[ext_resource path="res://enemies/PhantomBatEnemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/Level6_1.gd" type="Script" id=5]
+[ext_resource path="res://textures/L6MouthMask.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 14.5, 3 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 763.75, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10, 80.5 )
+
+[node name="Level6_1" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Level6_1" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1, 0 )
+
+[node name="Sconces" type="Node2D" parent="Level6_1"]
+position = Vector2( 50, -16 )
+
+[node name="Sconce" parent="Level6_1/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 1469, 112 )
+drop = "axe"
+
+[node name="Sconce2" parent="Level6_1/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 1402, 146 )
+
+[node name="Sconce3" parent="Level6_1/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 1337, 146 )
+
+[node name="Sconce4" parent="Level6_1/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 768, 83 )
+drop = "clock"
+
+[node name="Sconce5" parent="Level6_1/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 709, 83 )
+
+[node name="Sconce6" parent="Level6_1/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 639, 83 )
+
+[node name="Sconce7" parent="Level6_1/Sconces" instance=ExtResource( 2 )]
+position = Vector2( 47, 50 )
+drop = "bigHeart"
+
+[node name="PhantomBatEnemy" parent="Level6_1" instance=ExtResource( 4 )]
+
+[node name="PhantomBatEnemy2" parent="Level6_1" instance=ExtResource( 4 )]
+position = Vector2( -228, 107 )
+
+[node name="PhantomBatEnemy3" parent="Level6_1" instance=ExtResource( 4 )]
+position = Vector2( -528, -4 )
+
+[node name="PhantomBatEnemy4" parent="Level6_1" instance=ExtResource( 4 )]
+position = Vector2( -743, 112 )
+
+[node name="PhantomBatEnemy5" parent="Level6_1" instance=ExtResource( 4 )]
+position = Vector2( -910, -1 )
+
+[node name="SimonMask" type="Light2D" parent="Level6_1"]
+position = Vector2( 33, 48 )
+texture = ExtResource( 6 )
+mode = 3
+range_item_cull_mask = 4
+
+[node name="ExitArea" type="Area2D" parent="Level6_1"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level6_1/ExitArea"]
+position = Vector2( 45.5, 77 )
+shape = SubResource( 1 )
+
+[node name="ExitPosition" type="Position2D" parent="Level6_1"]
+position = Vector2( 16, 79 )
+
+[node name="DeathArea" type="Area2D" parent="Level6_1"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level6_1/DeathArea"]
+position = Vector2( 787.25, 185 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level6_1"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level6_1/StaticBody2D"]
+position = Vector2( 1562, 76.5 )
+shape = SubResource( 3 )
+
+[node name="SimonSpawn" type="Position2D" parent="."]
+position = Vector2( 1503, 143 )
+
+[node name="LevelSetup" type="Node" parent="."]
+script = ExtResource( 3 )
+faceRight = false
+music = "res://music/07 Out of Time.mp3"
+stage = 16
+timeLimit = 700
+
+[connection signal="body_entered" from="Level6_1/ExitArea" to="." method="_on_ExitArea_body_entered" flags=6]
+[connection signal="body_entered" from="Level6_1/DeathArea" to="." method="_on_DeathArea_body_entered"]

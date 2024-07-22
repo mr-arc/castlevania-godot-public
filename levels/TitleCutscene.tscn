@@ -1,0 +1,466 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://textures/TitleCutscene.png" type="Texture" id=1]
+[ext_resource path="res://textures/Simon.png" type="Texture" id=2]
+[ext_resource path="res://levels/TitleCutscene.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "Looking",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "Walking",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=7]
+resource_name = "Cutscene"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Foreground/IntroSimon:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "Walking", "Looking" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Castle:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 7.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 128, 63 ), Vector2( 128, 4 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Trees:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 6.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -25 ), Vector2( 0, -34 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Castle:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 7.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.22, 1.22 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Foreground/IntroSimon:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 230, 151 ), Vector2( 127, 151 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Foreground:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 4.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -43 ), Vector2( 0, -10 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Cloud:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 242, 32 ), Vector2( 196, 32 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Bat1Path/PathFollow2D:unit_offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("Path2D/PathFollow2D/Bat2:scale:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 6, -0.249999, 1.0582, 1, -4.23282, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 6.5 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("Path2D/PathFollow2D/Bat2:scale:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 6, -0.249999, 1.5383, 0.6, -3.69194, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 6.5 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("Path2D/PathFollow2D:unit_offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( 0, -0.25, -0.308019, 0.8, 0.985661, 0.927424, -0.9, -0.013314, 1.9, 0.0281073, 1, -0.7, -0.0216185, 0.25, 0.00772089 ),
+"times": PoolRealArray( 0, 3.7, 8 )
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Path2D/PathFollow2D/Bat2:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -30.0, 0.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Bat1Path:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 7.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -15, 72 ), Vector2( -15, 13 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Trees:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -17 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Castle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.25, 1.25 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Foreground/IntroSimon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 127, 165 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Castle:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 128, 21 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Foreground:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 17 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Cloud:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 196, 32 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Bat1Path/PathFollow2D:unit_offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("Path2D/PathFollow2D/Bat2:scale:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("Path2D/PathFollow2D/Bat2:scale:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("Path2D/PathFollow2D:unit_offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Bat1Path:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -15, 53 ) ]
+}
+
+[sub_resource type="Curve2D" id=12]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 162, 10, 15.7717, -0.660907, -15.7717, 0.660907, 142, 21, 7.06521, 3.6492, -7.06521, -3.6492, 120, 21, 0, 0, 0, 0, 102, 9 )
+}
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 288, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 288, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[sub_resource type="Curve2D" id=13]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 275, 75, 63.3035, -4.12035, -63.3035, 4.12035, 136, 130, 11.6119, 17.2305, -11.6119, -17.2305, 55, 106, -11.6119, 25.0966, 11.6119, -25.0966, 43, 51, -7.49154, 2.24746, 7.49154, -2.24746, 72, 27, 0, 0, 0, 0, 115, 23 )
+}
+
+[node name="TitleCutscene" type="Node2D"]
+position = Vector2( 0, 84 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 3 )
+
+[node name="Sky" type="Sprite" parent="."]
+position = Vector2( 128, 44.5 )
+scale = Vector2( 1, 60 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 256, 2 )
+
+[node name="Castle" type="Sprite" parent="."]
+position = Vector2( 128, 21 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 0, 160, 256 )
+
+[node name="Trees" type="Node2D" parent="."]
+position = Vector2( 0, -17 )
+
+[node name="LeftTrees" type="Sprite" parent="Trees"]
+position = Vector2( 24, 128 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 96, 48, 160 )
+
+[node name="RightTrees" type="Sprite" parent="Trees"]
+position = Vector2( 232, 128 )
+texture = ExtResource( 1 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( 0, 96, 48, 160 )
+
+[node name="TopMask" type="Sprite" parent="."]
+position = Vector2( 128, -15.5 )
+scale = Vector2( 1, 256 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 256, 256, 1 )
+
+[node name="Moon" type="Sprite" parent="."]
+position = Vector2( 204, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 272, 32, 32 )
+
+[node name="Cloud" type="Sprite" parent="."]
+position = Vector2( 196, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 272, 32, 16 )
+
+[node name="Foreground" type="Node2D" parent="."]
+position = Vector2( 0, 17 )
+
+[node name="BottomMask" type="Sprite" parent="Foreground"]
+position = Vector2( 128, 393 )
+scale = Vector2( 1, 256 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 256, 256, 1 )
+
+[node name="Gate" type="Sprite" parent="Foreground"]
+position = Vector2( 128, 141 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 304, 256, 64 )
+
+[node name="IntroSimon" type="AnimatedSprite" parent="Foreground"]
+position = Vector2( 127, 165 )
+frames = SubResource( 6 )
+animation = "Walking"
+frame = 1
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Cutscene"
+anims/Cutscene = SubResource( 7 )
+anims/RESET = SubResource( 8 )
+
+[node name="Bat1Path" type="Path2D" parent="."]
+position = Vector2( -15, 53 )
+scale = Vector2( 1.15, 0.880563 )
+curve = SubResource( 12 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Bat1Path"]
+position = Vector2( 102, 9 )
+rotation = 2.16149
+offset = 67.945
+rotate = false
+loop = false
+
+[node name="Bat1" type="AnimatedSprite" parent="Bat1Path/PathFollow2D"]
+position = Vector2( 5.63045, 5.96123 )
+rotation = -2.16149
+scale = Vector2( 0.869565, 1.13564 )
+frames = SubResource( 11 )
+frame = 1
+playing = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 13 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 115, 23 )
+offset = 384.102
+rotate = false
+loop = false
+
+[node name="Bat2" type="AnimatedSprite" parent="Path2D/PathFollow2D"]
+rotation = -0.523599
+frames = SubResource( 11 )
+frame = 1
+playing = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

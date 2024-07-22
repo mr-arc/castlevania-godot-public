@@ -1,0 +1,266 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://textures/Bosses.png" type="Texture" id=1]
+[ext_resource path="res://bosses/CookieMonster.gd" type="Script" id=2]
+[ext_resource path="res://Hitbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemies/Enemy.gd" type="Script" id=4]
+[ext_resource path="res://textures/CookieMonster.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 23.5, 11.5 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 24, 20 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 24, 8.5 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Fire"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 6, 1 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "fire"
+} ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Jump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 3 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Land"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/BodyBox/CollisionShape2D:shape:extents")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 24, 11 ), Vector2( 24, 20 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/BodyBox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( -4, 29 ), Vector2( -4, 20 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite/Hitbox/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( -6.5, -35 ), Vector2( -6.5, -52 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/BodyBox/CollisionShape2D:shape:extents")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 24, 20 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/BodyBox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -4, 20 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite/Hitbox/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -6.5, -52 ) ]
+}
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 144, 96, 16, 16 )
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0, 0.0596491, 0.740351 )
+colors = PoolColorArray( 0.878431, 0.172549, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="CookieMonster" type="KinematicBody2D"]
+collision_layer = 8
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 3, -40 )
+texture = ExtResource( 5 )
+hframes = 7
+region_rect = Rect2( 0, 112, 192, 192 )
+
+[node name="FirePosition" type="Position2D" parent="Sprite"]
+position = Vector2( -16, -12 )
+
+[node name="Hitbox" parent="Sprite" instance=ExtResource( 3 )]
+position = Vector2( 3, 40 )
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Hitbox"]
+position = Vector2( -6.5, -52 )
+shape = SubResource( 3 )
+
+[node name="BodyBox" parent="Sprite" instance=ExtResource( 3 )]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/BodyBox"]
+position = Vector2( -4, 20 )
+shape = SubResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -8.5 )
+shape = SubResource( 7 )
+
+[node name="Enemy" type="Node" parent="."]
+script = ExtResource( 4 )
+enemyName = "Cookie Monster"
+damage = 4
+points = 50000
+weakHits = 24
+strongHits = 16
+hitbox = NodePath("../Sprite/Hitbox")
+hitSound = 1
+deathBehavior = 1
+explosionOffset = Vector2( 0, -32 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Fire = SubResource( 4 )
+anims/Idle = SubResource( 1 )
+anims/Jump = SubResource( 5 )
+anims/Land = SubResource( 6 )
+anims/RESET = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BirthExplosion" type="CPUParticles2D" parent="."]
+position = Vector2( 0, -25 )
+emitting = false
+amount = 48
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.95
+lifetime_randomness = 0.36
+local_coords = false
+texture = SubResource( 9 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 120.0
+initial_velocity_random = 0.5
+angular_velocity = 100.0
+angular_velocity_random = 0.85
+scale_amount = 1.4
+scale_amount_random = 0.2
+color_ramp = SubResource( 10 )
+
+[connection signal="damaged" from="Enemy" to="." method="_on_Enemy_damaged"]
+[connection signal="killed" from="Enemy" to="." method="_on_Enemy_killed" flags=6]

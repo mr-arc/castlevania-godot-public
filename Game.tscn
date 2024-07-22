@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Simon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SoundPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Game.gd" type="Script" id=3]
+[ext_resource path="res://sounds/33 - Beep beep.wav" type="AudioStream" id=5]
+[ext_resource path="res://sounds/26 - Stopwatch.wav" type="AudioStream" id=6]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Weapons" type="Node2D" parent="."]
+
+[node name="Simon" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -38, -79 )
+current = true
+process_mode = 0
+
+[node name="SoundPlayer" parent="." instance=ExtResource( 2 )]
+
+[node name="GameTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerBeep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "Sounds"
+
+[node name="Timer" type="Timer" parent="TimerBeep"]
+wait_time = 1.2
+
+[node name="StopwatchTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[node name="StopwatchSound" type="AudioStreamPlayer" parent="StopwatchTimer"]
+stream = ExtResource( 6 )
+bus = "Sounds"
+
+[connection signal="respawn" from="Simon" to="." method="_on_Simon_respawn"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
+[connection signal="timeout" from="TimerBeep/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="StopwatchTimer" to="." method="_on_StopwatchTimer_timeout"]

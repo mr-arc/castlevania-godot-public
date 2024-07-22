@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/05 Walking On the Edge.mp3-95c165902ba6462101d7c533a80d5d08.mp3str"
+
+[deps]
+
+source_file="res://music/05 Walking On the Edge.mp3"
+dest_files=[ "res://.import/05 Walking On the Edge.mp3-95c165902ba6462101d7c533a80d5d08.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=6.4
